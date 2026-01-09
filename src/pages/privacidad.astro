@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Política de Privacidad | Sabokar">
+  <Header />
+  
+  <main class="legal-container">
+    <header class="legal-header">
+      <span class="subtitle">Protección de Datos</span>
+      <h1 class="title">Política de Privacidad</h1>
+      <div class="last-update">Vigente desde: Enero 2024</div>
+    </header>
+
+    <section class="legal-content">
+      <div class="legal-block">
+        <h2>Recopilación de Información</h2>
+        <p>En Sabokar, valoramos su privacidad. Los datos recolectados a través de nuestros formularios de contacto (nombre, correo electrónico, teléfono y empresa) se utilizan exclusivamente para brindar atención personalizada y procesar sus solicitudes de cotización.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Uso de la Información</h2>
+        <p>Su información nos permite:</p>
+        <ul class="legal-list">
+          <li>Personalizar su experiencia con nuestras soluciones industriales.</li>
+          <li>Enviar información técnica y actualizaciones de proyectos.</li>
+          <li>Mejorar nuestro servicio de atención al cliente.</li>
+        </ul>
+      </div>
+
+      <div class="legal-block">
+        <h2>Seguridad de los Datos</h2>
+        <p>Implementamos medidas de seguridad digitales para proteger su información personal. No vendemos, intercambiamos ni transferimos sus datos a terceros ajenos a nuestra operación comercial.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Derechos del Usuario</h2>
+        <p>Usted tiene derecho a solicitar el acceso, rectificación o eliminación de sus datos personales de nuestra base de datos en cualquier momento enviando un correo a <strong>contacto@sabokar.com</strong>.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;300;400;600&display=swap');
+
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 20px;
+  }
+
+  .legal-header { text-align: center; margin-bottom: 80px; }
+  
+  .subtitle {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #caa9a8; 
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: #a4142c;
+  }
+
+  .last-update {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: #bbb;
+  }
+
+  .legal-content {
+    font-family: 'Montserrat', sans-serif;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  .legal-block {
+    margin-bottom: 50px;
+    padding-left: 20px;
+    border-left: 1px solid #caa9a8;
+  }
+
+  .legal-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .legal-list {
+    margin-top: 15px;
+    padding-left: 20px;
+  }
+
+  .legal-list li {
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+
+  .legal-block strong { color: #a4142c; }
+</style>
