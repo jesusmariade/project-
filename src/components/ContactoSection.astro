@@ -1,0 +1,43 @@
+---
+const { contactInfo } = Astro.props;
+---
+
+<section class="hero">
+  <!-- Hero Section -->
+  <div class="hero-content">
+    <h1>Hagamos realidad tu proyecto</h1>
+    <p>Más de 10 años de experiencia en ingeniería y fabricación en acero inoxidable</p>
+  </div>
+</section>
+
+<main class="main-content">
+  <div class="contact-grid">
+    <!-- Formulario de contacto -->
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo *" required />
+        <input type="email" id="email" name="email" placeholder="Correo electrónico *" required />
+        <input type="tel" id="telefono" name="telefono" placeholder="Teléfono (opcional)" />
+        <select id="asunto" name="asunto" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="cotizacion">💰 Solicitar cotización</option>
+          <option value="proyecto">🏗️ Nuevo proyecto</option>
+          <option value="consulta">❓ Consulta técnica</option>
+          <option value="soporte">🔧 Soporte post-venta</option>
+          <option value="otro">✨ Otro</option>
+        </select>
+        <textarea id="mensaje" name="mensaje" maxlength="500" placeholder="Describe tu proyecto..."></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <h2>Información de contacto</h2>
+      <p>Ubicación: {contactInfo.location}</p>
+      <p>Teléfono: {contactInfo.phone}</p>
+      <p>Email: {contactInfo.email}</p>
+      <p>Horario: {contactInfo.businessHours.weekdays}, {contactInfo.businessHours.saturday}</p>
+    </div>
+  </div>
+</main>
