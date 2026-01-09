@@ -4,11 +4,25 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import Nosotros from "../components/Nosotros.astro";
+import ProductosDestacados from "../components/ProductosDestacados.astro";
+import ServiciosSection from "../components/ServiciosSection.astro";
+import TestimoniosSection from "../components/TestimoniosSection.astro";
+import CtaSection from "../components/CtaSection.astro";
+import StatsSection from "../components/StatsSection.astro";
+import MarcasSection from "../components/MarcasSection.astro";
+import VideoShowcases from "../components/VideoShowcase.astro";
 ---
 
-<Layout>
+<Layout title="Sabokar - Equipos en Acero Inoxidable | Inicio">
   <Header />
   <Hero />
+  <MarcasSection />
   <Nosotros />
+ <VideoShowcases /> 
+  <ServiciosSection />
+  <StatsSection />
+  <ProductosDestacados />
+  <TestimoniosSection />
+  <CtaSection />
   <Footer />
 </Layout>

@@ -1,37 +1,270 @@
-<section id="quienes-somos" class="quienes-somos">
-  <div class="container">
+<section id="quienes-somos" class="about-section">
+  <div class="about-container">
     
-    <!-- TEXTO -->
-    <div class="texto">
-      <h2>Quiénes somos</h2>
+    <!-- BLOQUE IZQUIERDO: Narrativa y Propósito -->
+    <div class="about-content">
+      <span class="about-subtitle">Nuestra Esencia</span>
+<h2 class="about-title">SABOKAR <span class="text-serif">Tecnología aplicada al acero</span></h2>
+      
+      <div class="about-text">
+        <p class="lead-text">
+          En <strong>Sabokar</strong> no solo fabricamos estructuras; forjamos soluciones industriales en acero inoxidable que definen el estándar de calidad en el mercado.
+        </p>
+         <p class="lead-text">
+Somos una empresa mexicana con experiencia en la industria alimenticia. Ofrecemos una amplia variedad de insumos para la industria cárnica y, 
+además, diseñamos y fabricamos maquinaria y equipos en acero inoxidable y acero al carbón para los procesos que cada cliente necesite.
 
-      <p>
-        En <strong>Sabokar</strong> desarrollamos soluciones
-        industriales en acero inoxidable, combinando ingeniería,
-        diseño y manufactura de alto nivel.
-      </p>
+Nos enfocamos en crear soluciones a la medida, combinando producto, ingeniería y asesoría para optimizar cada etapa del procesamiento.
+        </p>
+        
+        <div class="divider-line"></div>
+        
+        <!-- GRID DE MISIÓN Y VISIÓN -->
+        <div class="essence-grid">
+          <div class="essence-item">
+            <h4 class="essence-label">Misión</h4>
+            <p>Impulsar la industria con ingeniería de precisión, garantizando eficiencia y durabilidad suprema en cada pieza de acero que entregamos.</p>
+          </div>
+          <div class="essence-item">
+            <h4 class="essence-label">Visión</h4>
+            <p>Consolidarnos como el referente de excelencia en diseño industrial, donde la innovación y la maestría técnica se funden en cada proyecto.</p>
+          </div>
+        </div>
 
-      <p>
-        Cada proyecto es diseñado a la medida, cuidando funcionalidad,
-        durabilidad y eficiencia.
-      </p>
+        <p class="secondary-text">
+          Combinamos la manufactura moderna con un diseño visionario. Cada proyecto es concebido para elevar la funcionalidad y la estética de su entorno productivo.
+        </p>
+      </div>
     </div>
 
-    <!-- TARJETA -->
-    <div class="tarjeta">
-      <div class="card">
-        <div class="años">+10 años</div>
-
-        <p class="experiencia">de experiencia</p>
-
-        <p class="detalle">
-          Acompañando procesos productivos con tecnología confiable.
-        </p>
+    <!-- BLOQUE DERECHO: El Sello de Calidad -->
+    <div class="about-visual">
+      <div class="jewelry-card">
+        <div class="card-inner">
+          <div class="experience-badge">
+            <span class="number">10</span>
+            <span class="plus">+</span>
+          </div>
+          <h3 class="card-label">Años de Maestría</h3>
+          <div class="small-divider"></div>
+          
+          <ul class="pillar-list">
+            <li><span>•</span> Acero Inoxidable Grado 304/316L</li>
+            <li><span>•</span> Pulido Espejo de Alta Precisión</li>
+            <li><span>•</span> Soldadura Sanitaria Certificada</li>
+          </ul>
+        </div>
+        <div class="frame-decoration"></div>
       </div>
     </div>
 
   </div>
 
-  <!-- DECORACIÓN -->
-  <div class="decoracion"></div>
+  <div class="bg-accent-text">SABOKAR</div>
 </section>
+
+<style>
+  :root {
+    --p-red: #a4142c;      /* Color 1 */
+    --p-pink: #dc8c9c;     /* Color 2 */
+    --p-rose: #b95d68;     /* Color 4 */
+    --p-beige: #caa9a8;    /* Color 5 */
+    --text-main: #1a1a1a;
+    --serif-font: 'Playfair Display', serif;
+  }
+
+  .about-section {
+    padding: 140px 20px;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-container {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 100px;
+    align-items: flex-start;
+  }
+
+  /* --- TEXTO Y TÍTULOS --- */
+  .about-subtitle {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--p-rose);
+    margin-bottom: 20px;
+  }
+
+  .about-title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-main);
+    margin-bottom: 50px;
+  }
+
+  .text-serif {
+    font-family: var(--serif-font);
+    font-style: italic;
+    color: var(--p-red);
+  }
+
+  .lead-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: var(--p-beige);
+    margin-bottom: 40px;
+  }
+
+  /* --- GRID DE MISIÓN / VISIÓN --- */
+  .essence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    border-left: 1px solid var(--p-beige);
+    padding-left: 30px;
+  }
+
+  .essence-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--p-red);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .essence-item p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #555;
+    font-weight: 300;
+  }
+
+  .secondary-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #888;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* --- TARJETA "JEWELRY BOX" --- */
+  .about-visual {
+    position: sticky;
+    top: 100px;
+  }
+
+  .jewelry-card {
+    background: #ffffff;
+    padding: 60px 45px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.02);
+  }
+
+  .experience-badge {
+    color: var(--p-red);
+    margin-bottom: 15px;
+  }
+
+  .experience-badge .number {
+    font-size: 6rem;
+    font-weight: 200;
+    line-height: 1;
+    font-family: var(--serif-font);
+  }
+
+  .card-label {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 25px;
+  }
+
+  .pillar-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .pillar-list li {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--p-rose);
+    margin-bottom: 12px;
+    font-weight: 400;
+    display: flex;
+    gap: 10px;
+  }
+
+  .pillar-list li span {
+    color: var(--p-beige);
+  }
+
+  /* Decoración asimétrica fina */
+  .frame-decoration {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--p-beige);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .bg-accent-text {
+    position: absolute;
+    bottom: -30px;
+    right: 5%;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(164, 20, 44, 0.03);
+    z-index: 0;
+    letter-spacing: -5px;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 950px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    .essence-grid {
+      grid-template-columns: 1fr;
+      padding-left: 20px;
+    }
+    .about-visual {
+      display: flex;
+      justify-content: center;
+      position: static;
+    }
+    .jewelry-card {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+</style>
