@@ -1,0 +1,289 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { productos } from "../../data/productos";
+
+export async function getStaticPaths() {
+  return productos.map((producto: any) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+const { producto } = Astro.props;
+const gallery = producto.imagenes || [producto.imagen];
+---
+
+<Layout title={`${producto.nombre} | Sabokar`}>
+  <Header />
+  
+  <main class="product-detail-container">
+    <nav class="breadcrumb">
+      <a href="/Productos">← Volver al catálogo</a>
+    </nav>
+
+    <section class="product-hero">
+      <!-- COLUMNA IZQUIERDA: GALERÍA -->
+      <div class="product-gallery">
+        <div class="main-image-display">
+          <img 
+            id="main-img" 
+            src={gallery[0]} 
+            alt={producto.nombre} 
+            class="main-image" 
+          />
+        </div>
+        
+        <div class="thumbnail-list">
+          {gallery.map((img: string, index: number) => (
+            <button class={`thumb-btn ${index === 0 ? 'active' : ''}`} data-img={img}>
+              <img src={img} alt={`Vista ${index + 1}`} />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: INFO -->
+      <div class="product-info">
+        <header class="info-header">
+          <span class="product-category">{producto.tipo}</span>
+          <h1 class="product-title">{producto.nombre}</h1>
+          <div class="price-tag">Cotización bajo pedido</div>
+        </header>
+
+        <div class="product-description">
+          <p>{producto.descripcion}</p>
+        </div>
+
+        <div class="specs-section">
+          <h3 class="specs-title">Ficha Técnica</h3>
+          <ul class="specs-list">
+            <li><span>Material</span> <strong>Acero Inox AISI 304/316L</strong></li>
+            <li><span>Acabado</span> <strong>Pulido Sanitario Grado Pro</strong></li>
+            <li><span>Garantía</span> <strong>2 años por defectos de fábrica</strong></li>
+          </ul>
+        </div>
+
+        <div class="actions">
+          <a href="/Contacto" class="btn-quote">Solicitar Presupuesto</a>
+          <div class="trust-icons">
+            <span>🛡️ Calidad Certificada</span>
+            <span>⚙️ Soporte Técnico</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const mainImg = document.getElementById('main-img') as HTMLImageElement;
+  const thumbBtns = document.querySelectorAll('.thumb-btn');
+
+  thumbBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const newSrc = btn.getAttribute('data-img');
+      if (newSrc && mainImg) {
+        mainImg.style.opacity = '0.3';
+        setTimeout(() => {
+          mainImg.src = newSrc;
+          mainImg.style.opacity = '1';
+        }, 150);
+        thumbBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+    });
+  });
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&family=Montserrat:wght@200;300;400;600&display=swap');
+
+  :root {
+    --p-red: #a4142c;
+    --p-pink: #dc8c9c;
+    --p-beige: #caa9a8;
+    --text-dark: #1a1a1a;
+  }
+
+  .product-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 100px;
+  }
+
+  .breadcrumb { margin-bottom: 40px; }
+  .breadcrumb a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--p-beige);
+    transition: color 0.3s;
+  }
+  .breadcrumb a:hover { color: var(--p-red); }
+
+  .product-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* --- CONTROL DE TAMAÑO DE IMAGEN (SOLUCIÓN) --- */
+  .main-image-display {
+    background-color: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    width: 100%;
+    /* Ajusta este valor para controlar la altura máxima de la imagen */
+    max-height: 500px; 
+    aspect-ratio: 1 / 1; /* Hace que el contenedor sea cuadrado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 30px;
+  }
+
+  .main-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Evita que la imagen se estire o se corte */
+    transition: opacity 0.4s ease;
+  }
+
+  /* --- MINIATURAS --- */
+  .thumbnail-list {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .thumb-btn {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #eee;
+    background: white;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .thumb-btn.active {
+    border-color: var(--p-red);
+    box-shadow: 0 5px 15px rgba(164, 20, 44, 0.1);
+  }
+
+  /* --- INFORMACIÓN --- */
+  .product-category {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--p-pink);
+  }
+
+  .product-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--text-dark);
+    margin: 10px 0 20px;
+    line-height: 1.1;
+  }
+
+  .price-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--p-red);
+    margin-bottom: 30px;
+  }
+
+  .product-description p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  /* --- FICHA TÉCNICA --- */
+  .specs-section {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  .specs-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .specs-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .specs-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #f9f9f9;
+  }
+
+  .specs-list li span { color: #888; }
+  .specs-list li strong { color: var(--text-dark); font-weight: 500; }
+
+  /* --- BOTONES --- */
+  .btn-quote {
+    display: block;
+    background-color: var(--p-red);
+    color: white;
+    text-align: center;
+    padding: 22px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+  }
+
+  .btn-quote:hover {
+    background-color: var(--text-dark);
+    letter-spacing: 5px;
+  }
+
+  .trust-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .product-hero { grid-template-columns: 1fr; gap: 40px; }
+    .main-image-display { max-height: 400px; }
+  }
+</style>

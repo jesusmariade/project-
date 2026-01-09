@@ -1,0 +1,248 @@
+---
+import type { Producto } from "../types/producto";
+
+interface Props {
+  producto: Producto;
+}
+
+const { producto } = Astro.props as Props;
+
+// --- CONFIGURACIÓN DE WHATSAPP ---
+const telefonoEmpresa = "524741120595"; // <--- CAMBIA ESTO (Ejemplo: 52 + número)
+const mensajeBase = `Hola Sabokar, me interesa recibir una cotización de el siguiente producto de su pagina: *${producto.nombre}*`;
+const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(mensajeBase)}`;
+---
+
+<div
+  class="product-boutique-card"
+  data-tipo={producto.tipo}
+  data-nombre={producto.nombre.toLowerCase()}
+  data-descripcion={producto.descripcion.toLowerCase()}
+  data-images={JSON.stringify(producto.imagenes ?? [])}
+>
+  <div class="image-showcase">
+    <span class="type-tag">{producto.tipo}</span>
+    
+    <button aria-label="Añadir a deseos" class="wishlist-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="heart-icon">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </button>
+
+    <div class="img-wrapper">
+      <img
+        src={producto.imagen ?? producto.imagenes?.[0]}
+        alt={producto.nombre}
+        class="main-img"
+      />
+    </div>
+    
+    <div class="quick-view-overlay">
+      <a href={`/productos/${producto.slug}`} class="quick-link">Explorar Pieza</a>
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h3 class="product-name">{producto.nombre}</h3>
+    <p class="product-excerpt">{producto.descripcion}</p>
+    
+    <div class="action-bar">
+      <!-- CAMBIO AQUÍ: Ahora el link va a WhatsApp -->
+      <a href={whatsappUrl} target="_blank" class="quote-link">
+        <span>Cotizar</span>
+        <div class="link-line"></div>
+      </a>
+      <a href={`/productos/${producto.slug}`} class="detail-icon-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const card = document.currentScript?.closest('.product-boutique-card');
+      if(!card) return;
+      const img = card.querySelector('.main-img') as HTMLImageElement;
+      const raw = card.getAttribute('data-images') || '[]';
+      let images = [];
+      try { images = JSON.parse(raw); } catch { images = []; }
+      let idx = 0;
+      let timer = null;
+      
+      const start = () => {
+        if(images.length <= 1 || !img) return;
+        timer = setInterval(() => {
+          idx = (idx + 1) % images.length;
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = images[idx];
+            img.style.opacity = '1';
+          }, 200);
+        }, 1500);
+      };
+      
+      const stop = () => { 
+        if(timer){ clearInterval(timer); timer = null; }
+        if(images.length && img){ img.src = images[0]; }
+      };
+      
+      card.addEventListener('mouseenter', start);
+      card.addEventListener('mouseleave', stop);
+    })();
+  </script>
+</div>
+
+<style>
+  :root {
+    --p-red: #a4142c;
+    --p-dark: #1a1a1a;
+    --p-gray: #757575;
+    --p-light: #f9f9f9;
+    --serif: 'Playfair Display', serif;
+  }
+
+  .product-boutique-card {
+    background: #ffffff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+
+  .image-showcase {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--p-light);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-wrapper {
+    width: 85%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease;
+  }
+
+  .main-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+  }
+
+  .type-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--p-red);
+    font-weight: 700;
+    z-index: 5;
+  }
+
+  .wishlist-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--p-dark);
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .heart-icon { width: 20px; height: 20px; }
+
+  .quick-view-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    text-align: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .quick-link {
+    text-decoration: none;
+    color: var(--p-dark);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  .product-boutique-card:hover .quick-view-overlay {
+    transform: translateY(0);
+  }
+
+  .product-details {
+    padding: 20px 10px 10px;
+    text-align: left;
+  }
+
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--p-dark);
+    margin-bottom: 8px;
+  }
+
+  .product-excerpt {
+    font-size: 0.85rem;
+    color: var(--p-gray);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quote-link {
+    text-decoration: none;
+    color: var(--p-red);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .link-line {
+    width: 0%;
+    height: 1px;
+    background: var(--p-red);
+    transition: width 0.3s ease;
+    margin-top: 4px;
+  }
+
+  .quote-link:hover .link-line {
+    width: 100%;
+  }
+
+  .detail-icon-link {
+    color: var(--p-dark);
+  }
+
+  @media (max-width: 768px) {
+    .quick-view-overlay { display: none; }
+  }
+</style>

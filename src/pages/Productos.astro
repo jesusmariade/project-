@@ -1,0 +1,226 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { productos } from "../data/productos"; 
+
+// DEFINIMOS LAS CATEGORÍAS MANUALMENTE PARA QUE SIEMPRE SALGAN bai bai 
+const categorias = [
+  "Todos", 
+  "Maquinaria", 
+  "Insumos", 
+  "Grabado Láser", 
+  "Montacargas",
+  "Repuestos"
+];
+---
+
+<Layout title="Catálogo | Sabokar - Ingeniería en Acero">
+  <Header />
+  
+  <main class="catalogo-container">
+    <header class="catalogo-header">
+      <span class="subtitle">Catalogo</span>
+      <h1 class="title">Nuestros productos</h1>
+    </header>
+
+    <!-- BUSCADOR Y FILTROS -->
+    <section class="filter-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre o pieza..." />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </div>
+
+      <div class="categories-filter">
+        {categorias.map((cat) => (
+          <button class="filter-btn" data-category={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="grid-productos" id="productGrid">
+      {productos.map((item) => (
+        <div class="product-item" data-category={item.tipo} data-name={item.nombre.toLowerCase()}>
+          <ProductCard producto={item} />
+        </div>
+      ))}
+    </section>
+
+    <div id="noResults" class="hidden">
+        <p>No hay productos disponibles en esta categoría por el momento.</p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const products = document.querySelectorAll('.product-item');
+  const noResults = document.getElementById('noResults');
+
+  function filterProducts() {
+    const searchText = searchInput.value.toLowerCase();
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : "Todos";
+    
+    let visibleCount = 0;
+
+    products.forEach((product: any) => {
+      const category = product.getAttribute('data-category');
+      const name = product.getAttribute('data-name');
+      
+      const matchesCategory = activeCategory === "Todos" || category === activeCategory;
+      const matchesSearch = name.includes(searchText);
+
+      if (matchesCategory && matchesSearch) {
+        product.style.display = 'block';
+        visibleCount++;
+      } else {
+        product.style.display = 'none';
+      }
+    });
+
+    noResults?.classList.toggle('hidden', visibleCount > 0);
+  }
+
+  searchInput?.addEventListener('input', filterProducts);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterProducts();
+    });
+  });
+
+  // Activar "Todos" al cargar
+  document.querySelector('[data-category="Todos"]')?.classList.add('active');
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+  .catalogo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .catalogo-header { text-align: center; margin-bottom: 50px; }
+  
+  .subtitle {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #b95d68;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #a4142c;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .search-box {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .search-box input {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #caa9a8; /* Color beige */
+    padding: 15px 40px 10px 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .search-box input:focus {
+    border-bottom-color: #a4142c; 
+  }
+
+  .search-box svg {
+    position: absolute;
+    right: 5px;
+    bottom: 12px;
+    color: #a4142c;
+    opacity: 0.6;
+  }
+
+  .categories-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    padding: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #a4142c;
+    transition: width 0.3s ease;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    color: #a4142c;
+  }
+
+  .filter-btn.active::after {
+    width: 100%;
+  }
+
+  /* --- GRID --- */
+  .grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+  }
+
+  #noResults {
+    text-align: center;
+    padding: 60px;
+    color: #999;
+    font-style: italic;
+  }
+
+  .hidden { display: none; }
+</style>
