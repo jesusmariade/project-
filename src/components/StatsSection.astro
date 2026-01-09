@@ -1,0 +1,224 @@
+<section class="stats-section">
+  <div class="stats-container">
+    <div class="stats-grid">
+      
+      <!-- Item 1 -->
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number-wrapper">
+            <span class="stat-number" data-count="150">0</span><span class="plus">+</span>
+          </div>
+          <div class="stat-label">Proyectos Completados</div>
+        </div>
+      </div>
+      
+      <!-- Item 2 -->
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number-wrapper">
+            <span class="stat-number" data-count="50">0</span><span class="plus">+</span>
+          </div>
+          <div class="stat-label">Clientes Satisfechos</div>
+        </div>
+      </div>
+      
+      <!-- Item 3 -->
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number-wrapper">
+            <span class="stat-number" data-count="12">0</span>
+          </div>
+          <div class="stat-label">Años de Experiencia</div>
+        </div>
+      </div>
+      
+      <!-- Item 4 -->
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number-wrapper">
+            <span class="stat-number" data-count="100">0</span><span class="plus">%</span>
+          </div>
+          <div class="stat-label">Calidad Garantizada</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@300;400&display=swap');
+
+  .stats-section {
+    padding: 100px 20px;
+    background-color: #ffffff; 
+    position: relative;
+  }
+
+  /* Líneas divisorias superiores e inferiores muy tenues */
+  .stats-section::before, .stats-section::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #caa9a8, transparent);
+  }
+  .stats-section::before { top: 0; }
+  .stats-section::after { bottom: 0; }
+
+  .stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.4s ease;
+  }
+
+  /* Íconos minimalistas */
+  .stat-icon {
+    margin-bottom: 20px;
+    color: #b95d68; /* Color 4: Rosa Viejo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+  }
+
+  .stat-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1px; 
+  }
+
+  /* Números con tipografía Serif de lujo */
+  .stat-number-wrapper {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #a4142c; /* Color 1: Rojo principal */
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .plus {
+    color: #caa9a8; /* Color 5: Beige Rosado */
+    font-size: 2rem;
+    margin-left: 4px;
+    vertical-align: super;
+  }
+
+  /* Etiquetas sutiles */
+  .stat-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #b95d68; /* Color 4 */
+    opacity: 0.9;
+  }
+
+  /* Efecto Hover sutil */
+  .stat-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-item:hover .stat-icon {
+    color: #a4142c;
+    opacity: 1;
+  }
+
+  /* Separadores verticales entre items (solo en desktop) */
+  @media (min-width: 769px) {
+    .stat-item:not(:last-child) {
+      border-right: 1px solid rgba(202, 169, 168, 0.3); 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-number-wrapper {
+      font-size: 2.8rem;
+    }
+    .stat-item:nth-child(even) {
+      border-left: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'));
+          const duration = 2500; // Un poco más lento para más elegancia segun pagina simplonaaa
+          const startTime = performance.now();
+
+          function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease out cubic para suavidad
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.floor(easeProgress * target);
+            
+            el.textContent = currentValue.toString();
+
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              el.textContent = target.toString();
+            }
+          }
+
+          requestAnimationFrame(update);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => observer.observe(stat));
+  }
+
+  document.addEventListener('DOMContentLoaded', animateStats);
+  // Compatibilidad con transiciones de Astro si las usas
+  document.addEventListener('astro:after-swap', animateStats);
+</script>

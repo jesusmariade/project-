@@ -1,0 +1,137 @@
+---
+const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
+---
+
+<section class="video-showcase">
+  <div class="video-wrapper">
+    <!-- Video de fondo: siempre silenciado, en loop y sin controles -->
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="bg-video"
+      poster="/images/poster-video.jpg" 
+    >
+      <source src={videoUrl} type="video/mp4" />
+      Tu navegador no soporta videos.
+    </video>
+
+    <!-- Capa de color para dar el tono de tu marca -->
+    <div class="video-overlay"></div>
+
+    <!-- Contenido minimalista encima del video -->
+    <div class="video-content">
+      <span class="video-tag">Excelencia en Acero</span>
+      <h2 class="video-title">Precisión que Brilla</h2>
+      <div class="decorative-line"></div>
+      <p class="video-description">
+        Cada soldadura y acabado es tratado como una pieza de arte industrial.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-showcase {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* No ocupa toda la pantalla para que el usuario siga bajando */
+    overflow: hidden;
+    margin: 60px 0;
+    background-color: #000;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.8; /* Un poco de transparencia para el estilo */
+  }
+
+  /* Overlay con tu paleta de colores (Color 1 y Color 3) */
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg, 
+      rgba(164, 20, 44, 0.4) 0%, /* Tu rojo con transparencia */
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 1;
+  }
+
+  .video-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  .video-tag {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    color: #caa9a8; /* Tu color 5: Beige Rosado */
+  }
+
+  .video-title {
+    font-family: 'Playfair Display', serif; /* O Cormorant Garamond */
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  .decorative-line {
+    width: 60px;
+    height: 1px;
+    background-color: #ffffff;
+    margin: 0 auto 30px;
+    opacity: 0.6;
+  }
+
+  .video-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  /* Efecto de entrada sutil (puedes usar el Intersection Observer que hicimos antes) */
+  @media (max-width: 768px) {
+    .video-showcase {
+      height: 50vh;
+    }
+    .video-title {
+      font-size: 2rem;
+    }
+  }
+</style>

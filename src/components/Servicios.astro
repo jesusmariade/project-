@@ -1,0 +1,241 @@
+<section id="servicios" class="servicios-section">
+  <div class="servicios-container">
+    <h2 class="servicios-title">
+      Lo que hacemos
+    </h2>
+    <p class="servicios-subtitle">
+      Soluciones integrales para tu industria
+    </p>
+
+    <div class="servicios-grid">
+      <!-- Servicio 1 -->
+      <div class="servicio-card">
+        <div class="servicio-bg-circle"></div>
+
+        <div class="servicio-content">
+          <div class="servicio-icon">
+            <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+          </div>
+
+          <h3 class="servicio-titulo">
+            Diseño Industrial
+          </h3>
+          <p class="servicio-descripcion">
+            Modelado y desarrollo de maquinaria en acero inoxidable,
+            optimizada para procesos reales.
+          </p>
+        </div>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="servicio-card">
+        <div class="servicio-bg-circle"></div>
+
+        <div class="servicio-content">
+          <div class="servicio-icon">
+            <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547"
+              />
+            </svg>
+          </div>
+
+          <h3 class="servicio-titulo">
+            Fabricación
+          </h3>
+          <p class="servicio-descripcion">
+            Manufactura precisa con altos estándares de calidad y
+            acabados profesionales.
+          </p>
+        </div>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="servicio-card">
+        <div class="servicio-bg-circle"></div>
+
+        <div class="servicio-content">
+          <div class="servicio-icon">
+            <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4"
+              />
+            </svg>
+          </div>
+
+          <h3 class="servicio-titulo">
+            Soluciones a Medida
+          </h3>
+          <p class="servicio-descripcion">
+            Cada proyecto es único. Adaptamos cada máquina a tus
+            necesidades operativas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+    /* Importar tipografías elegantes */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+  --color1: #a4142c; /* Rojo Profundo */
+  --color2: #dc8c9c; /* Rosa Suave */
+  --color3: #a30c27; /* Rojo Intenso */
+  --color4: #b95d68; /* Rosa Viejo */
+  --color5: #caa9a8; /* Beige Rosado */
+  --white: #ffffff;
+}
+
+.servicios-section {
+  padding: 80px 20px;
+  background-color: #fffafb; /* Un fondo casi blanco con un toque cálido */
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+
+.servicios-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Estilo de Títulos - Inspiración Pandora */
+.servicios-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--color1);
+  font-weight: 400;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.servicios-subtitle {
+  font-size: 1rem;
+  color: var(--color4);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+/* Grid de servicios */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+/* Tarjetas */
+.servicio-card {
+  position: relative;
+  background: var(--white);
+  padding: 50px 30px;
+  border: 1px solid rgba(164, 20, 44, 0.1); /* Borde muy fino */
+  transition: all 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(185, 93, 104, 0.15);
+  border-color: var(--color5);
+}
+
+/* Círculo decorativo sutil de fondo */
+.servicio-bg-circle {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: var(--color5);
+  opacity: 0.1;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.servicio-card:hover .servicio-bg-circle {
+  transform: scale(2.5);
+  opacity: 0.05;
+}
+
+/* Iconos */
+.servicio-icon {
+  position: relative;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 25px;
+  color: var(--color3);
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover .servicio-icon {
+  transform: scale(1.1);
+}
+
+.icon-svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1px; 
+}
+
+/* Textos de la tarjeta */
+.servicio-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--color1);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.servicio-descripcion {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666;
+  font-weight: 300;
+}
+
+/* Detalle inferior decorativo (como una joya) */
+.servicio-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--color2);
+  transition: width 0.4s ease;
+}
+
+.servicio-card:hover::after {
+  width: 40%;
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  .servicios-title {
+    font-size: 2.2rem;
+  }
+}
+</style>

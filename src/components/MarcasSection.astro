@@ -1,0 +1,146 @@
+<section class="marcas-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="header-subtitle">Nuestra Trayectoria</span>
+      <h3 class="section-title">Marcas que confian en <span class="text-serif"> nosotros</span></h3>
+    </div>
+    
+    <div class="marcas-wrapper">
+      <div class="marcas-grid">
+        <div class="marca-item">
+          <span class="marca-logo">marca o cliente satisfecho nombre 1 </span>
+        </div>
+        <div class="marca-item">
+          <span class="marca-logo">marca o cliente satisfecho nombre 2</span>
+        </div>
+        <div class="marca-item">
+          <span class="marca-logo">marca o cliente satisfecho nombre 3</span>
+        </div>
+        <div class="marca-item">
+          <span class="marca-logo">marca o cliente satisfecho nombre 3</span>
+        </div>
+        <div class="marca-item">
+          <span class="marca-logo">marca o cliente satisfecho nombre 3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --primary-red: #a4142c;
+    --text-muted: #888888;
+    --text-dark: #1a1a1a;
+    --serif-font: 'Playfair Display', serif;
+  }
+
+  .marcas-section {
+    padding: 100px 20px;
+    background: #ffffff; 
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .header-subtitle {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.7rem;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+  }
+
+  .text-serif {
+    font-family: var(--serif-font);
+    font-style: italic;
+  }
+
+  .marcas-wrapper {
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 60px 0;
+  }
+
+  .marcas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    gap: 60px;
+  }
+
+  .marca-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(1); 
+    opacity: 0.5;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .marca-logo {
+    font-family: var(--serif-font);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    position: relative;
+    cursor: default;
+  }
+
+  /* Efecto hover refinado */
+  .marca-item:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  .marca-item:hover .marca-logo {
+    color: var(--primary-red);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .marcas-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .marcas-section {
+      padding: 60px 20px;
+    }
+    
+    .section-title {
+      font-size: 1.6rem;
+    }
+
+    .marcas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    
+    .marca-logo {
+      font-size: 0.9rem;
+    }
+  }
+</style>
