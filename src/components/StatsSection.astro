@@ -67,7 +67,6 @@
     position: relative;
   }
 
-  /* Líneas divisorias superiores e inferiores muy tenues */
   .stats-section::before, .stats-section::after {
     content: "";
     position: absolute;
@@ -99,10 +98,9 @@
     transition: all 0.4s ease;
   }
 
-  /* Íconos minimalistas */
   .stat-icon {
     margin-bottom: 20px;
-    color: #b95d68; /* Color 4: Rosa Viejo */
+    color: #b95d68; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,24 +113,22 @@
     stroke-width: 1px; 
   }
 
-  /* Números con tipografía Serif de lujo */
   .stat-number-wrapper {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.5rem;
-    color: #a4142c; /* Color 1: Rojo principal */
+    color: #a4142c; 
     font-weight: 300;
     line-height: 1;
     margin-bottom: 10px;
   }
 
   .plus {
-    color: #caa9a8; /* Color 5: Beige Rosado */
+    color: #caa9a8; 
     font-size: 2rem;
     margin-left: 4px;
     vertical-align: super;
   }
 
-  /* Etiquetas sutiles */
   .stat-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
@@ -143,7 +139,6 @@
     opacity: 0.9;
   }
 
-  /* Efecto Hover sutil */
   .stat-item:hover {
     transform: translateY(-5px);
   }
@@ -153,7 +148,6 @@
     opacity: 1;
   }
 
-  /* Separadores verticales entre items (solo en desktop) */
   @media (min-width: 769px) {
     .stat-item:not(:last-child) {
       border-right: 1px solid rgba(202, 169, 168, 0.3); 
@@ -179,8 +173,9 @@
     }
   }
 </style>
-
 <script>
+// no se pórque no funciona y si lo pongo en un archivo js aparte tampoco
+
   function animateStats() {
     const statNumbers = document.querySelectorAll('.stat-number');
     
@@ -189,14 +184,14 @@
         if (entry.isIntersecting) {
           const el = entry.target;
           const target = parseInt(el.getAttribute('data-count'));
-          const duration = 2500; // Un poco más lento para más elegancia segun pagina simplonaaa
+          const duration = 2500; // Un poco más lento para más elegancia segun pagina simplonaaa 
           const startTime = performance.now();
 
           function update(currentTime) {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             
-            // Ease out cubic para suavidad
+            
             const easeProgress = 1 - Math.pow(1 - progress, 3);
             const currentValue = Math.floor(easeProgress * target);
             
@@ -219,6 +214,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', animateStats);
-  // Compatibilidad con transiciones de Astro si las usas
+  
   document.addEventListener('astro:after-swap', animateStats);
 </script>

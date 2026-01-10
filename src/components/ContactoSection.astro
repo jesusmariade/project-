@@ -1,10 +1,14 @@
 ---
+// Información de Sabokar
 const { contactInfo = {
-  phone: "+52 (55) 1234-5678",
-  email: "contacto@ingenieria.com",
-  businessHours: { weekdays: "Lunes a Viernes: 8:00 AM - 6:00 PM" },
-  location: "Parque Industrial Delta, Bodega 12, Ciudad de México"
+  phone: "+52 474 126 2488",
+  email: "ventas01@sabokar.com.mx",
+  businessHours: { weekdays: "Lunes a Viernes: 7:00 AM - 17:00 PM", saturday: "Sábado: 8:00 AM - 13:00 PM" },
+  location: "Rancho los Sauces, SN, Cam a Comanja KM 6, La Sauceda CP 47504 El Tepetate, Lagos de moreno, Jalisco, México"
 } } = Astro.props;
+
+// URL de inserción de Google Maps basada en la ubicacion real de la empresa pagina de contacto casi completa 
+const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.53123865261!2d-101.8527686!3d21.3617871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bc00000000000%3A0x0!2sRancho%20los%20Sauces!5e0!3m2!1ses-419!2smx!4v1704900000000!5m2!1ses-419!2smx";
 ---
 
 <section class="contact-hero">
@@ -17,16 +21,15 @@ const { contactInfo = {
 
   <div class="hero-container">
     <div class="hero-content">
-      <span class="hero-subtitle-top">Excelencia y Precisión</span>
+      <span class="hero-subtitle-top">Ingeniería de clase mundial</span>
       
       <h1 class="hero-title">
-        Ingeniería en <span class="text-serif">Acero</span> 
-        <br /> 
-        <span class="text-accent">al siguiente nivel</span>
+        Sabokar: Excelencia en <br />
+        <span class="text-serif">Acero Inoxidable</span>
       </h1>
       
       <p class="hero-description">
-        Diseño y fabricación de estructuras industriales con el refinamiento técnico que su proyecto merece.
+        Desde Lagos de Moreno, diseñamos y fabricamos la maquinaria que impulsa la industria mexicana con precisión quirúrgica.
       </p>
       
       <div class="hero-stats">
@@ -36,7 +39,7 @@ const { contactInfo = {
         </div>
         <div class="stat-item">
           <span class="stat-number">150+</span>
-          <span class="stat-label">Proyectos</span>
+          <span class="stat-label">Piezas</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">50+</span>
@@ -51,76 +54,89 @@ const { contactInfo = {
   <div class="contact-container">
     <div class="contact-grid">
       
+      <!-- FORMULARIO CONECTADO  -->
       <div class="form-card">
         <div class="card-header">
           <h2 class="text-serif">Solicitar Presupuesto</h2>
-          <p>Complete el formulario y un asesor técnico se pondrá en contacto con usted.</p>
+          <p>Complete sus datos técnicos y un ingeniero le contactará vía WhatsApp de inmediato.</p>
         </div>
         
-        <form class="styled-form">
+        <form id="contactForm" class="styled-form">
           <div class="input-row">
             <div class="input-group">
-              <input type="text" id="name" placeholder=" " required />
+              <input type="text" id="name" name="name" placeholder=" " required />
               <label for="name">Nombre completo</label>
             </div>
             <div class="input-group">
-              <input type="email" id="email" placeholder=" " required />
-              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder=" " required />
+              <label for="email">Correo corporativo</label>
             </div>
           </div>
 
           <div class="input-row">
             <div class="input-group">
-              <input type="tel" id="phone" placeholder=" " />
-              <label for="phone">Teléfono de contacto</label>
+              <input type="tel" id="user_phone" name="phone" placeholder=" " required />
+              <label for="user_phone">Teléfono / WhatsApp</label>
             </div>
             <div class="input-group">
-              <select id="service" required>
+              <select id="service" name="service" required>
                 <option value="" disabled selected></option>
-                <option value="cotizacion">Cotización de equipo</option>
-                <option value="personalizado">Proyecto especial</option>
-                <option value="soporte">Soporte Técnico</option>
+                <option value="Maquinaria">Cotización de Maquinaria</option>
+                <option value="Grabado Laser">Grabado Láser / Insumos</option>
+                <option value="Proyecto Especial">Proyecto Especial</option>
+                <option value="Mantenimiento">Servicio Técnico</option>
               </select>
-              <label for="service">Servicio de interés</label>
+              <label for="service">Tipo de requerimiento</label>
             </div>
           </div>
 
           <div class="input-group">
-            <textarea id="message" rows="4" placeholder=" "></textarea>
-            <label for="message">Detalles del requerimiento</label>
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Especificaciones (Medidas, material, proceso)</label>
           </div>
 
           <button type="submit" class="pandora-button">
-            <span>Enviar Solicitud</span>
+            <span>Iniciar Cotización vía WhatsApp</span>
           </button>
         </form>
       </div>
 
+      <!-- lateral  -->
       <div class="info-sidebar">
         <div class="info-section">
           <h3 class="info-title">Atención Directa</h3>
           <div class="info-item">
-            <span class="info-label">Teléfono</span>
+            <span class="info-label">Ventas</span>
             <p class="info-value">{contactInfo.phone}</p>
           </div>
           <div class="info-item">
-            <span class="info-label">Email</span>
+            <span class="info-label">Email Oficial</span>
             <p class="info-value">{contactInfo.email}</p>
           </div>
           <div class="info-item">
-            <span class="info-label">Horario</span>
+            <span class="info-label">Horario de Planta</span>
             <p class="info-value">{contactInfo.businessHours.weekdays}</p>
+            <p class="info-value">{contactInfo.businessHours.saturday}</p>
+
           </div>
         </div>
 
         <div class="location-card">
           <div class="location-header">
-            <h3 class="info-title">Ubicación</h3>
-            <p>{contactInfo.location}</p>
+            <h3 class="info-title">Nuestra Planta</h3>
+            <p class="loc-text">{contactInfo.location}</p>
           </div>
           <div class="map-container">
-            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop" alt="Planta" />
-            <a href="#" class="map-link">Ver en Google Maps</a>
+            <iframe 
+              src={mapEmbedUrl} 
+              width="100%" 
+              height="280" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <a href="https://maps.app.goo.gl/gmKUaHDx4DLBgHPS8" target="_blank" class="map-link">Abrir en Google Maps</a>
           </div>
         </div>
       </div>
@@ -129,206 +145,130 @@ const { contactInfo = {
   </div>
 </main>
 
+<script define:vars={{ companyPhone: contactInfo.phone }}>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (!form) return;
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const name = formData.get('name')?.toString() || '';
+    const email = formData.get('email')?.toString() || '';
+    const phone = formData.get('phone')?.toString() || '';
+    const service = formData.get('service')?.toString() || '';
+    const message = formData.get('message')?.toString() || '';
+    
+    // Limpiar el número de teléfono aun no encuentro el error 
+    const cleanPhone = (companyPhone as string).replace(/\D/g, ''); 
+
+    // Construcción del mensaje para whats 
+    const text = `*SOLICITUD TÉCNICA - SABOKAR*%0A` +
+                 `--------------------------%0A` +
+                 `*Nombre:* ${name}%0A` +
+                 `*Email:* ${email}%0A` +
+                 `*Teléfono:* ${phone}%0A` +
+                 `*Interés:* ${service}%0A` +
+                 `*Mensaje:* ${message}`;
+
+    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${text}`;
+    window.open(whatsappUrl, '_blank');
+  });
+</script>
+
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;300;400;600&display=swap');
+
   :root {
-    --primary: #a4142c;
+    --p-red: #a4142c;   
+    --p-pink: #dc8c9c;  
+    --p-beige: #caa9a8; 
     --dark: #1a1a1a;
-    --light-grey: #f4f4f4;
-    --white: #ffffff;
-    --serif-font: 'Playfair Display', serif; /* Pandora usa fuentes serif con clase */
+    --serif-font: 'Playfair Display', serif;
   }
 
-  /* --- HERO ESTILO LUJO --- */
+  /* --- HERO me quedo bonito la verdad lastima que no funcioneeeeeee :'v --- */
   .contact-hero {
     position: relative;
     height: 70vh;
     display: flex;
     align-items: center;
     background: #000;
-    color: var(--white);
-    padding: 0 5%;
+    color: #fff;
+    padding: 0 8%;
   }
 
-  .hero-video-container {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+  .hero-video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .bg-video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+  .video-overlay { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, transparent 100%);
   }
 
-  .bg-video {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: brightness(0.4);
-  }
+  .hero-content { position: relative; z-index: 2; max-width: 850px; }
+  .hero-subtitle-top { text-transform: uppercase; letter-spacing: 6px; font-size: 0.7rem; color: var(--p-beige); margin-bottom: 20px; display: block; }
+  .hero-title { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1; margin-bottom: 30px; }
+  .text-serif { font-family: var(--serif-font); font-style: italic; color: var(--p-pink); }
+  .hero-description { font-size: 1.1rem; opacity: 0.8; max-width: 550px; font-weight: 300; line-height: 1.7; border-left: 2px solid var(--p-red); padding-left: 25px; }
 
-  .video-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 100%);
-  }
+  .hero-stats { display: flex; gap: 50px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat-number { font-size: 2rem; font-family: var(--serif-font); display: block; color: var(--p-beige); }
+  .stat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-  }
+  /* --- MAIN --- */
+  .contact-main { background: #fff; padding: 120px 20px; font-family: 'Montserrat', sans-serif; }
+  .contact-container { max-width: 1200px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 100px; }
 
-  .hero-subtitle-top {
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 0.75rem;
-    color: var(--primary);
-    margin-bottom: 20px;
-    display: block;
-  }
+  /* --- FORMULARIO  */
+  .card-header h2 { font-family: var(--serif-font); font-size: 2.8rem; font-weight: 400; color: var(--p-red); margin-bottom: 10px; }
+  .card-header p { color: #888; margin-bottom: 60px; font-weight: 300; }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 30px;
-  }
+  .styled-form { display: flex; flex-direction: column; gap: 45px; }
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
-  .text-serif {
-    font-family: var(--serif-font);
-    font-style: italic;
-  }
-
-  .text-accent { color: var(--white); font-weight: 600; }
-
-  .hero-description {
-    font-size: 1.1rem;
-    opacity: 0.8;
-    max-width: 500px;
-    margin-bottom: 40px;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 30px;
-  }
-
-  .stat-number { font-size: 2rem; font-weight: 300; display: block; }
-  .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
-
-  /* --- MAIN CONTENT --- */
-  .contact-main { background: var(--white); padding: 80px 0; }
-  .contact-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  
-  .contact-grid { 
-    display: grid; 
-    grid-template-columns: 1.5fr 1fr; 
-    gap: 80px; 
-  }
-
-  /* --- FORMULARIO MINIMALISTA (FLOATING LABELS) --- */
-  .form-card { background: var(--white); }
-  .card-header h2 { font-size: 2.5rem; font-weight: 300; margin-bottom: 15px; }
-  .card-header p { color: #666; margin-bottom: 50px; }
-
-  .styled-form { display: flex; flex-direction: column; gap: 40px; }
-  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-
-  .input-group { position: relative; border-bottom: 1px solid #ccc; transition: 0.3s; }
-  .input-group:focus-within { border-bottom-color: var(--primary); }
+  .input-group { position: relative; border-bottom: 1px solid #e0e0e0; transition: 0.4s; }
+  .input-group:focus-within { border-bottom-color: var(--p-red); }
 
   .input-group input, .input-group select, .input-group textarea {
-    width: 100%;
-    padding: 10px 0;
-    border: none;
-    background: transparent;
-    font-size: 1rem;
-    outline: none;
+    width: 100%; padding: 12px 0; border: none; background: transparent; font-size: 1rem; outline: none; font-family: inherit;
   }
 
   .input-group label {
-    position: absolute;
-    top: 10px; left: 0;
-    color: #999;
-    pointer-events: none;
-    transition: 0.3s ease all;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+    position: absolute; top: 12px; left: 0; color: #aaa; pointer-events: none; transition: 0.3s ease all;
+    text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;
   }
 
-  /* Efecto de etiqueta flotante */
-  .input-group input:focus ~ label,
-  .input-group input:not(:placeholder-shown) ~ label,
-  .input-group textarea:focus ~ label,
-  .input-group textarea:not(:placeholder-shown) ~ label,
-  .input-group select:focus ~ label,
-  .input-group select:valid ~ label {
-    top: -15px;
-    font-size: 0.65rem;
-    color: var(--primary);
+  .input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label,
+  .input-group textarea:focus ~ label, .input-group textarea:not(:placeholder-shown) ~ label,
+  .input-group select:focus ~ label, .input-group select:valid ~ label {
+    top: -18px; font-size: 0.6rem; color: var(--p-red); opacity: 1;
   }
 
   .pandora-button {
-    align-self: flex-start;
-    padding: 18px 60px;
-    background: var(--primary);
-    color: white;
-    border: 1px solid var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: 0.4s;
+    align-self: flex-start; padding: 20px 50px; background: var(--p-red); color: #fff; border: none;
+    text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; cursor: pointer; transition: 0.5s;
   }
+  .pandora-button:hover { background: var(--dark); letter-spacing: 6px; }
 
-  .pandora-button:hover {
-    background: transparent;
-    color: var(--primary);
-  }
-
-  /* --- SIDEBAR --- */
   .info-sidebar { display: flex; flex-direction: column; gap: 60px; }
-
-  .info-title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--primary);
-    margin-bottom: 25px;
-    font-weight: 700;
-  }
-
-  .info-item { margin-bottom: 25px; }
-  .info-label { font-size: 0.7rem; text-transform: uppercase; color: #999; display: block; margin-bottom: 5px; }
+  .info-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--p-red); margin-bottom: 30px; font-weight: 700; }
+  .info-item { margin-bottom: 30px; }
+  .info-label { font-size: 0.65rem; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; letter-spacing: 1px; }
   .info-value { font-size: 1.1rem; color: var(--dark); font-weight: 400; }
+  .loc-text { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 20px; font-weight: 300; }
 
-  .map-container {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-  }
-
-  .map-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
-  
+  .map-container { position: relative; border: 1px solid #f0f0f0; filter: grayscale(1); transition: 0.6s; }
+  .map-container:hover { filter: grayscale(0); }
   .map-link {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(26,26,26,0.9);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    display: block; text-align: center; padding: 12px; background: #f9f9f9; color: var(--p-red);
+    text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
   }
 
-  .map-link:hover { background: var(--primary); }
-
-  /* --- RESPONSIVE --- */
   @media (max-width: 900px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 80px; }
+    .input-row { grid-template-columns: 1fr; gap: 40px; }
     .hero-stats { gap: 20px; }
-    .input-row { grid-template-columns: 1fr; }
+    .contact-hero { height: auto; padding: 120px 20px; }
   }
 </style>

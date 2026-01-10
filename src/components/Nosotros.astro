@@ -1,7 +1,7 @@
 <section id="quienes-somos" class="about-section">
   <div class="about-container">
     
-    <!-- BLOQUE IZQUIERDO: Narrativa y Propósito -->
+    <!-- BLOQUE IZQUIERDO: Narrativa y Propósito mejorar toda la informacion de saboka r-->
     <div class="about-content">
       <span class="about-subtitle">Nuestra Esencia</span>
 <h2 class="about-title">SABOKAR <span class="text-serif">Tecnología aplicada al acero</span></h2>
@@ -37,7 +37,7 @@ Nos enfocamos en crear soluciones a la medida, combinando producto, ingeniería 
       </div>
     </div>
 
-    <!-- BLOQUE DERECHO: El Sello de Calidad -->
+    <!-- BLOQUE DERECHO:  la tarjetita hay que hacerla mas bonita o modificar los puntos  -->
     <div class="about-visual">
       <div class="jewelry-card">
         <div class="card-inner">
@@ -65,10 +65,10 @@ Nos enfocamos en crear soluciones a la medida, combinando producto, ingeniería 
 
 <style>
   :root {
-    --p-red: #a4142c;      /* Color 1 */
-    --p-pink: #dc8c9c;     /* Color 2 */
-    --p-rose: #b95d68;     /* Color 4 */
-    --p-beige: #caa9a8;    /* Color 5 */
+    --p-red: #a4142c;      
+    --p-pink: #dc8c9c;     
+    --p-rose: #b95d68;     
+    --p-beige: #caa9a8;    
     --text-main: #1a1a1a;
     --serif-font: 'Playfair Display', serif;
   }
@@ -88,7 +88,21 @@ Nos enfocamos en crear soluciones a la medida, combinando producto, ingeniería 
     gap: 100px;
     align-items: flex-start;
   }
+.lead-text {
+  max-width: 780px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(20, 20, 20, 0.85);
+  font-weight: 300;
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
+}
 
+/* */
+.lead-text strong {
+  font-weight: 600;
+  color: var(--p-red);
+}
   /* --- TEXTO Y TÍTULOS --- */
   .about-subtitle {
     display: block;
@@ -100,19 +114,19 @@ Nos enfocamos en crear soluciones a la medida, combinando producto, ingeniería 
     margin-bottom: 20px;
   }
 
-  .about-title {
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--text-main);
-    margin-bottom: 50px;
-  }
+ .about-title {
+  font-size: clamp(1.8rem, 3.5vw, 2rem); /* más compacto */
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-main);
+  margin-bottom: 32px;
+}
 
-  .text-serif {
-    font-family: var(--serif-font);
-    font-style: italic;
-    color: var(--p-red);
-  }
+.text-serif {
+  font-family: var(--serif-font);
+  font-style: italic;
+  color: var(--p-red);
+}
 
   .lead-text {
     font-size: 1.25rem;

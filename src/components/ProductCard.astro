@@ -8,7 +8,7 @@ interface Props {
 const { producto } = Astro.props as Props;
 
 // --- CONFIGURACIÓN DE WHATSAPP ---
-const telefonoEmpresa = "524741120595"; // <--- CAMBIA ESTO (Ejemplo: 52 + número)
+const telefonoEmpresa = "524741120595"; 
 const mensajeBase = `Hola Sabokar, me interesa recibir una cotización de el siguiente producto de su pagina: *${producto.nombre}*`;
 const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(mensajeBase)}`;
 ---
@@ -38,7 +38,7 @@ const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(
     </div>
     
     <div class="quick-view-overlay">
-      <a href={`/productos/${producto.slug}`} class="quick-link">Explorar Pieza</a>
+      <a href={`/productos/${producto.slug}`} class="quick-link">Explorar Equipo</a>
     </div>
   </div>
 
@@ -47,7 +47,7 @@ const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(
     <p class="product-excerpt">{producto.descripcion}</p>
     
     <div class="action-bar">
-      <!-- CAMBIO AQUÍ: Ahora el link va a WhatsApp -->
+      <!-- Ahora el link va a WhatsApp -->
       <a href={whatsappUrl} target="_blank" class="quote-link">
         <span>Cotizar</span>
         <div class="link-line"></div>
@@ -60,17 +60,28 @@ const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(
 
   <script>
     (function(){
-      const card = document.currentScript?.closest('.product-boutique-card');
+      const card = document.currentScript?.closest('.product-boutique-card') as HTMLElement;
       if(!card) return;
       const img = card.querySelector('.main-img') as HTMLImageElement;
+      if(!img) return;
+      
       const raw = card.getAttribute('data-images') || '[]';
-      let images = [];
-      try { images = JSON.parse(raw); } catch { images = []; }
+      let images: string[] = [];
+      try { 
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          images = parsed;
+        }
+      } catch { 
+        images = []; 
+      }
+      
       let idx = 0;
-      let timer = null;
+      let timer: number | null = null;
       
       const start = () => {
         if(images.length <= 1 || !img) return;
+        if(timer !== null) clearInterval(timer);
         timer = setInterval(() => {
           idx = (idx + 1) % images.length;
           img.style.opacity = '0';
@@ -78,12 +89,17 @@ const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(
             img.src = images[idx];
             img.style.opacity = '1';
           }, 200);
-        }, 1500);
+        }, 1500) as unknown as number;
       };
       
       const stop = () => { 
-        if(timer){ clearInterval(timer); timer = null; }
-        if(images.length && img){ img.src = images[0]; }
+        if(timer !== null){ 
+          clearInterval(timer); 
+          timer = null; 
+        }
+        if(images.length && img){ 
+          img.src = images[0]; 
+        }
       };
       
       card.addEventListener('mouseenter', start);

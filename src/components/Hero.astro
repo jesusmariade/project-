@@ -1,5 +1,5 @@
 <section class="hero">
-  <!-- VIDEO DE FONDO -->
+  <!-- VIDEO DE FONDO se pretende poner un video propio de sabokar  -->
   <video
     class="hero-video"
     autoplay
@@ -11,7 +11,7 @@
     <source src="/videos/hero.mp4" type="video/mp4" />
   </video>
 
-  <!-- OVERLAY (Se oscurece un poco al hacer hover para leer mejor) -->
+  <!-- OVERLAY no se si dejar el texto sobre la imagen o eliminarlo de una -->
   <div class="hero-overlay"></div>
 
   <!-- CONTENIDO (Oculto por defecto) -->
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <!-- INDICADOR SUTIL (Para que el usuario sepa que hay contenido) -->
+  <!-- INDICADOR SUTIL (Para que el usuario sepa que hay contenido) que no se vera mientras el cursor no este ahi -->
   <div class="scroll-indicator">
     <span>Explorar</span>
     <div class="mouse-line"></div>
@@ -50,9 +50,9 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&family=Montserrat:wght@300;400;600&display=swap');
 
   :root {
-    --p-red: #a4142c;   /* Color 1 */
-    --p-pink: #dc8c9c;  /* Color 2 */
-    --p-beige: #caa9a8; /* Color 5 */
+    --p-red: #a4142c;   
+    --p-pink: #dc8c9c;  
+    --p-beige: #caa9a8; 
     --white: #ffffff;
   }
 
@@ -67,7 +67,7 @@
     background-color: #000;
   }
 
-  /* --- VIDEO --- */
+  /*VIDEO */
   .hero-video {
     position: absolute;
     top: 50%;
@@ -79,7 +79,6 @@
     z-index: 0;
   }
 
-  /* --- OVERLAY --- */
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -95,7 +94,6 @@
     background: rgba(0, 0, 0, 0.5); /* Se oscurece al pasar el cursor */
   }
 
-  /* --- CONTENIDO CON EFECTO REVEAL --- */
   .hero-content {
     position: relative;
     z-index: 2;
@@ -110,7 +108,6 @@
     transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
   }
 
-  /* ACTIVACIÓN AL HOVER */
   .hero:hover .hero-content {
     opacity: 1;
     transform: translateY(0);
@@ -147,7 +144,7 @@
     opacity: 0.9;
   }
 
-  /* --- BOTONES --- */
+  /* --- Botonsillos --- */
   .hero-actions {
     display: flex;
     gap: 20px;
@@ -186,7 +183,7 @@
     color: var(--p-red);
   }
 
-  /* --- INDICADOR INFERIOR --- */
+  /* --- indicador de abajo --- */
   .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -197,7 +194,7 @@
     transition: opacity 0.5s ease;
   }
 
-  /* Desaparece el indicador al hacer hover */
+  /* Desaparece el indicador */
   .hero:hover .scroll-indicator {
     opacity: 0;
   }
@@ -226,7 +223,7 @@
   }
 
   @media (max-width: 768px) {
-    /* En móvil, que el contenido sea visible o se active al toque */
+    /* En móvil, que el contenido sea visible o se active al toque no se a probado en movil la funcionalidad  */
     .hero-content {
       opacity: 1;
       transform: translateY(0);

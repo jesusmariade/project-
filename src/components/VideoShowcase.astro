@@ -1,10 +1,10 @@
 ---
-const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
+const videoUrl = "/videos/vide.mp4"; 
 ---
 
 <section class="video-showcase">
   <div class="video-wrapper">
-    <!-- Video de fondo: siempre silenciado, en loop y sin controles -->
+    
     <video 
       autoplay 
       muted 
@@ -14,13 +14,11 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
       poster="/images/poster-video.jpg" 
     >
       <source src={videoUrl} type="video/mp4" />
-      Tu navegador no soporta videos.
+      Tu navegador no soporta videos acaso usas Internet Explorer? jajajajaa.
     </video>
 
-    <!-- Capa de color para dar el tono de tu marca -->
     <div class="video-overlay"></div>
 
-    <!-- Contenido minimalista encima del video -->
     <div class="video-content">
       <span class="video-tag">Excelencia en Acero</span>
       <h2 class="video-title">Precisión que Brilla</h2>
@@ -36,7 +34,7 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
   .video-showcase {
     position: relative;
     width: 100%;
-    height: 70vh; /* No ocupa toda la pantalla para que el usuario siga bajando */
+    height: 70vh; 
     overflow: hidden;
     margin: 60px 0;
     background-color: #000;
@@ -62,10 +60,10 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
     height: auto;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.8; /* Un poco de transparencia para el estilo */
+    opacity: 0.8;
   }
 
-  /* Overlay con tu paleta de colores (Color 1 y Color 3) */
+
   .video-overlay {
     position: absolute;
     top: 0;
@@ -74,7 +72,7 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
     height: 100%;
     background: linear-gradient(
       135deg, 
-      rgba(164, 20, 44, 0.4) 0%, /* Tu rojo con transparencia */
+      rgba(164, 20, 44, 0.4) 0%, 
       rgba(0, 0, 0, 0.6) 100%
     );
     z-index: 1;
@@ -96,11 +94,11 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
     text-transform: uppercase;
     letter-spacing: 6px;
     margin-bottom: 20px;
-    color: #caa9a8; /* Tu color 5: Beige Rosado */
+    color: #caa9a8; 
   }
 
   .video-title {
-    font-family: 'Playfair Display', serif; /* O Cormorant Garamond */
+    font-family: 'Playfair Display', serif; 
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 400;
     margin-bottom: 20px;
@@ -125,7 +123,7 @@ const videoUrl = "/videos/vide.mp4"; // Cambia esto por tu ruta real
     opacity: 0.9;
   }
 
-  /* Efecto de entrada sutil (puedes usar el Intersection Observer que hicimos antes) */
+ 
   @media (max-width: 768px) {
     .video-showcase {
       height: 50vh;
