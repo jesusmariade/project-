@@ -12,7 +12,7 @@ const categorias = [
   "Insumos", 
   "Grabado Láser", 
   "Montacargas",
-  "Repuestos"
+  
 ];
 ---
 
@@ -62,34 +62,40 @@ const categorias = [
   const searchInput = document.getElementById('searchInput') as HTMLInputElement;
   const filterBtns = document.querySelectorAll('.filter-btn');
   const products = document.querySelectorAll('.product-item');
-  const noResults = document.getElementById('noResults');
+  const noResults = document.getElementById('noResults') as HTMLElement;
 
   function filterProducts() {
+    if (!searchInput) return;
+    
     const searchText = searchInput.value.toLowerCase();
-    const activeBtn = document.querySelector('.filter-btn.active');
-    const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : "Todos";
+    const activeBtn = document.querySelector('.filter-btn.active') as HTMLButtonElement;
+    const activeCategory = activeBtn?.getAttribute('data-category') || "Todos";
     
     let visibleCount = 0;
 
-    products.forEach((product: any) => {
+    products.forEach((product: Element) => {
       const category = product.getAttribute('data-category');
-      const name = product.getAttribute('data-name');
+      const name = product.getAttribute('data-name') || '';
       
       const matchesCategory = activeCategory === "Todos" || category === activeCategory;
-      const matchesSearch = name.includes(searchText);
+      const matchesSearch = name.toLowerCase().includes(searchText);
 
       if (matchesCategory && matchesSearch) {
-        product.style.display = 'block';
+        (product as HTMLElement).style.display = 'block';
         visibleCount++;
       } else {
-        product.style.display = 'none';
+        (product as HTMLElement).style.display = 'none';
       }
     });
 
-    noResults?.classList.toggle('hidden', visibleCount > 0);
+    if (noResults) {
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    }
   }
 
-  searchInput?.addEventListener('input', filterProducts);
+  if (searchInput) {
+    searchInput.addEventListener('input', filterProducts);
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -100,7 +106,10 @@ const categorias = [
   });
 
   // Activar "Todos" al cargar
-  document.querySelector('[data-category="Todos"]')?.classList.add('active');
+  const todosBtn = document.querySelector('[data-category="Todos"]') as HTMLButtonElement;
+  if (todosBtn) {
+    todosBtn.classList.add('active');
+  }
 </script>
 
 <style>
