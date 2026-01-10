@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Event listener para búsqueda
+  // Event listener para búsqueda sera que todos mis scrps estarian bien conectados? si los muevo aqui?
   buscador.addEventListener("input", aplicarFiltros);
 
   // Event listeners para chips de filtro

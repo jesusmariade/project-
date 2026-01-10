@@ -1,7 +1,7 @@
 export interface Producto {
   nombre: string;
   descripcion: string;
-  tipo: "maquinaria" | "insumos";
+  tipo: string;
   slug: string;
   imagen?: string;
   imagenes?: string[];

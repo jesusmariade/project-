@@ -4,7 +4,7 @@ export const productos = [
     slug: "tina-cuajada-3000",
     tipo: "Maquinaria",
     descripcion: "Equipo en acero inoxidable para procesos lácteos...",
-    // AGREGAMOS ESTO:
+    // aqui van a ir todas las imagenes desde diferentes angulos de nuestros productos:
     imagenes: [
       "/imagenes/tina-frontal.jpg", 
       "/imagenes/tina-lateral.jpg", 
